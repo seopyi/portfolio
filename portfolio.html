@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lee Hoseop | Developer Portfolio</title>
+  <meta
+    name="description"
+    content="AI를 활용해 실제 동작하는 시스템을 만드는 개발자 이호섭의 포트폴리오"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --surface-soft: #efebe4;
+      --ink: #171714;
+      --muted: #67625b;
+      --soft: #9a9288;
+      --line: #ddd5ca;
+      --accent: #2459d6;
+      --accent-soft: #e8eefc;
+      --green: #188568;
+      --amber: #a45d18;
+      --red: #b9413a;
+      --radius: 12px;
+      --shadow: 0 18px 50px rgba(31, 28, 22, 0.08);
+      --sans: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Outfit", "Noto Sans KR", system-ui, sans-serif;
+      --mono: "DM Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 0 48px;
+      border-bottom: 1px solid rgba(221, 213, 202, 0.85);
+      background: rgba(247, 245, 240, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--accent);
+      font-family: var(--display);
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      padding: 7px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 7px;
+      color: var(--accent) !important;
+      background: rgba(36, 89, 214, 0.05);
+    }
+
+    section {
+      padding: 118px 48px;
+    }
+
+    .inner {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    .band {
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+
+    .label {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 860px;
+      font-family: var(--display);
+      font-size: clamp(44px, 6.2vw, 80px);
+      font-weight: 800;
+      line-height: 1.02;
+    }
+
+    h2 {
+      max-width: 760px;
+      font-family: var(--display);
+      font-size: clamp(32px, 4.4vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    h3 {
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.38;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding-top: 150px;
+      padding-bottom: 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 72px;
+      align-items: end;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 28px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 30px;
+      padding: 5px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(24, 133, 104, 0.13);
+    }
+
+    .hero-sub {
+      max-width: 660px;
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.78;
+    }
+
+    .hero-sub strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2a2a26;
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.65);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: #c4baad;
+      color: var(--ink);
+    }
+
+    .intro-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro-card-title {
+      margin-bottom: 14px;
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .intro-list {
+      display: grid;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .intro-list li {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+    }
+
+    .intro-list li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .intro-main {
+      margin-bottom: 5px;
+      font-weight: 800;
+    }
+
+    .intro-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 76px;
+      margin-top: 52px;
+      align-items: start;
+    }
+
+    .body-text {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .body-text p + p {
+      margin-top: 18px;
+    }
+
+    .body-text strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .stats {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stat {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 20px 20px 18px;
+      box-shadow: 0 10px 28px rgba(31, 28, 22, 0.045);
+    }
+
+    .stat::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: var(--accent);
+      opacity: 0.78;
+    }
+
+    .stat-kicker {
+      margin-bottom: 10px;
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .stat-num {
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-label {
+      margin-top: 9px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .stat-note {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 52px;
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow: 0 12px 34px rgba(31, 28, 22, 0.05);
+    }
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(390px, 1.05fr);
+    }
+
+    .project-visual {
+      min-height: 255px;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-soft);
+      padding: 24px;
+    }
+
+    .project-card.featured .project-visual {
+      min-height: 100%;
+      border-right: 1px solid var(--line);
+      border-bottom: 0;
+    }
+
+    /* ── Architecture Diagram ─────────────────────── */
+    .arch {
+      width: min(380px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .arch-layer {
+      display: flex;
+      gap: 7px;
+    }
+
+    .arch-node {
+      flex: 1;
+      border: 1px solid rgba(36, 89, 214, 0.20);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.82);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .arch-node.accent {
+      border-color: rgba(36, 89, 214, 0.45);
+      background: rgba(232, 238, 252, 0.55);
+    }
+
+    .arch-node.server {
+      border-color: rgba(36, 89, 214, 0.30);
+      background: rgba(232, 238, 252, 0.28);
+      padding: 12px 14px;
+      gap: 8px;
+    }
+
+    .arch-node.ext {
+      border-color: rgba(24, 133, 104, 0.30);
+      background: rgba(24, 133, 104, 0.06);
+    }
+
+    .arch-label {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .arch-sub {
+      font-size: 10px;
+      color: var(--soft);
+      line-height: 1.55;
+    }
+
+    .arch-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 0;
+      gap: 6px;
+      color: var(--accent);
+      font-size: 10px;
+    }
+
+    .arch-connector-line {
+      height: 1px;
+      flex: 1;
+      background: rgba(36, 89, 214, 0.20);
+    }
+
+    .arch-connector-text {
+      font-family: var(--mono);
+      color: var(--soft);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .arch-arrow {
+      display: flex;
+      justify-content: center;
+      color: rgba(36, 89, 214, 0.5);
+      font-size: 14px;
+      padding: 3px 0;
+    }
+
+    .arch-nlp {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(36,89,214,0.15);
+      border-radius: 6px;
+      padding: 6px 9px;
+      font-size: 10px;
+    }
+
+    .arch-nlp-step {
+      flex: 1;
+      text-align: center;
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .arch-nlp-arrow {
+      color: var(--accent);
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    .arch-nlp-free {
+      font-size: 9px;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    .arch-row-inner {
+      display: flex;
+      gap: 7px;
+    }
+
+    .arch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(36,89,214,0.10);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 9px;
+      font-weight: 500;
+    }
+
+    .arch-badge.green {
+      background: rgba(24,133,104,0.10);
+      color: var(--green);
+    }
+
+    /* ── legacy diagram (unused but kept) ─────────── */
+    .diagram-box { display: none; }
+    .diagram-row { display: none; }
+    .diagram-arrow { display: none; }
+
+    .mini-screen {
+      width: min(360px, 100%);
+      border: 1px solid #d2cabf;
+      border-radius: 10px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .mini-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 36px;
+      padding: 0 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    .mini-body {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .mini-line {
+      height: 13px;
+      border-radius: 999px;
+      background: #ddd7ce;
+    }
+
+    .mini-line.short {
+      width: 56%;
+    }
+
+    .mini-line.blue {
+      background: #c8d6fa;
+    }
+
+    .project-info {
+      padding: 30px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 5px;
+      background: var(--surface-soft);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      text-transform: uppercase;
+    }
+
+    .project-desc {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .project-highlights {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+      list-style: none;
+    }
+
+    .project-highlights li {
+      display: flex;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .project-highlights li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      flex: 0 0 6px;
+      margin-top: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .text-link {
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .text-link:hover,
+    .text-link:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 34px;
+      margin-top: 52px;
+    }
+
+    .skill-group {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .skill-title {
+      margin-bottom: 14px;
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill-chip {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 9px 14px;
+    }
+
+    .timeline {
+      margin-top: 52px;
+      border-left: 1px solid var(--line);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 38px;
+      padding: 0 0 48px 30px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: -5px;
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      background: var(--surface);
+    }
+
+    .timeline-date {
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .timeline-role {
+      margin-bottom: 7px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .timeline-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.82;
+    }
+
+    .contact-card {
+      max-width: 780px;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      padding: 58px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h2 {
+      margin: 0 auto;
+    }
+
+    .contact-card p {
+      max-width: 520px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.82;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 30px 48px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(20, 20, 18, 0.62);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      width: min(930px, 100%);
+      max-height: 91vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .modal-head,
+    .modal-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 58px;
+      padding: 0 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-foot {
+      border-top: 1px solid var(--line);
+      border-bottom: 0;
+    }
+
+    .modal-small {
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      background: var(--surface-soft);
+      color: var(--ink);
+    }
+
+    .modal-body {
+      padding: 40px 46px;
+      overflow: auto;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .slide-title {
+      max-width: 420px;
+      font-family: var(--display);
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .slide-copy {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.84;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .detail {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #f7f4ef;
+      padding: 16px;
+    }
+
+    .detail-kicker {
+      margin-bottom: 6px;
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .detail-title {
+      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .detail-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    .bug-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .bug {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .bug-box {
+      border-radius: 8px;
+      background: #f7f4ef;
+      padding: 14px;
+    }
+
+    .bug-box.problem {
+      border-left: 3px solid var(--red);
+    }
+
+    .bug-box.solution {
+      border-left: 3px solid var(--green);
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot-button {
+      width: 8px;
+      height: 8px;
+      border: 0;
+      border-radius: 999px;
+      background: #d3cabf;
+      cursor: pointer;
+    }
+
+    .dot-button.active {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 920px) {
+      .nav {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      section {
+        padding: 90px 24px;
+      }
+
+      .hero {
+        padding-top: 128px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .project-card.featured,
+      .slide-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-card {
+        max-width: 520px;
+      }
+
+      .project-card.featured .project-visual {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .skills-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        height: auto;
+        min-height: 76px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+        padding: 11px 18px 12px;
+      }
+
+      .nav-links {
+        width: 100%;
+        padding-bottom: 2px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+      }
+
+      .hero {
+        padding-top: 158px;
+      }
+
+      .projects-grid,
+      .diagram-row,
+      .timeline-item,
+      .bug {
+        grid-template-columns: 1fr;
+      }
+
+      .diagram-arrow {
+        transform: rotate(90deg);
+      }
+
+      .contact-card {
+        padding: 34px 22px;
+      }
+
+      .modal-overlay {
+        padding: 12px;
+      }
+
+      .modal-body {
+        padding: 28px 20px;
+      }
+
+      .modal-foot {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 20px;
+      }
+
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a class="logo" href="#home" aria-label="홈으로 이동">
+      <span class="logo-mark">H</span>
+      LHS.DEV
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a class="nav-cta" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="inner hero-grid">
+        <div class="fade-in">
+          <div class="status-row">
+            <span class="pill"><span class="dot"></span>취업 준비 중</span>
+            <span class="pill">2027.02 졸업 예정</span>
+            <span class="pill">Python / FastAPI / Kotlin</span>
+          </div>
+          <h1>빠르게 배우고, 실제로 돌아가게 만드는 개발자.</h1>
+          <p class="hero-sub">
+            안녕하세요, 이호섭입니다. 저는 <strong>AI를 도구로 활용해 모르는 기술도 빠르게 파악하고,
+            직접 구현해보며 증명하는 개발자</strong>를 목표로 하고 있습니다.
+            지금은 개인 AI 비서 프로젝트 ARIA를 중심으로 음성, 서버, 자동화, 모바일 연동을 만들고 있습니다.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">프로젝트 보기</a>
+            <a class="btn btn-ghost" href="#about">소개 읽기</a>
+          </div>
+        </div>
+
+        <aside class="intro-card fade-in" aria-label="핵심 소개">
+          <div class="intro-card-title">profile snapshot</div>
+          <ul class="intro-list">
+            <li>
+              <div class="intro-main">부천대학교 컴퓨터소프트웨어학과</div>
+              <p class="intro-note">3학년 재학 중, 2027년 2월 졸업 예정</p>
+            </li>
+            <li>
+              <div class="intro-main">대표 프로젝트: ARIA Home AI</div>
+              <p class="intro-note">음성 클라이언트와 Mac mini 서버를 직접 설계하고 운영</p>
+            </li>
+            <li>
+              <div class="intro-main">관심 분야</div>
+              <p class="intro-note">AI 서비스, 백엔드, 자동화, 운영 가능한 개인 시스템</p>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="band" id="about">
+      <div class="inner fade-in">
+        <p class="label">about</p>
+        <h2>처음부터 다 아는 사람은 아니지만, 끝까지 연결해보는 사람입니다.</h2>
+        <div class="about-grid">
+          <div class="body-text">
+            <p>
+              저는 개발을 배울 때 단순히 예제를 따라가는 것보다, 실제로 제가 쓸 수 있는 형태로 만들어보는 편입니다.
+              ARIA Home AI도 그런 방식으로 시작했습니다. 처음에는 음성으로 GPT와 대화하는 작은 프로그램이었지만,
+              만들다 보니 일정, 알람, 브리핑, 서버 운영, 비용 관리까지 자연스럽게 확장되었습니다.
+            </p>
+            <p>
+              이 과정에서 가장 많이 배운 것은 <strong>모르는 기술을 빠르게 적용하는 법</strong>과
+              <strong>버그를 피하지 않고 원인을 좁혀가는 법</strong>입니다. 음성 녹음이 중간에 끊기거나,
+              알람 명령이 다른 의도로 잘못 분류되거나, 서버 스레드가 죽는 문제를 하나씩 해결하면서
+              코드가 실제 생활에서 동작하려면 어떤 점을 챙겨야 하는지 배웠습니다.
+            </p>
+            <p>
+              아직 신입이고 배워야 할 것도 많지만, 저는 빠르게 배우는 것에서 멈추지 않고
+              작게라도 동작하는 결과물로 연결하는 개발자가 되고 싶습니다.
+            </p>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-kicker">education</div>
+              <div class="stat-num">3학년</div>
+              <div class="stat-label">컴퓨터소프트웨어학과 재학</div>
+              <p class="stat-note">전공 수업에서 배운 구조를 개인 프로젝트로 직접 옮겨보고 있습니다.</p>
+            </div>
+            <div class="stat">
+              <div class="stat-kicker">operation</div>
+              <div class="stat-num">24/7</div>
+              <div class="stat-label">Mac mini 서버 상시 운영 구조 설계</div>
+              <p class="stat-note">Docker, watchdog, 백업/진단 API를 붙여 계속 켜둘 수 있는 형태로 개선했습니다.</p>
+            </div>
+            <div class="stat">
+              <div class="stat-kicker">cost</div>
+              <div class="stat-num">0원</div>
+              <div class="stat-label">기본 음성 STT/TTS API 비용 절감</div>
+              <p class="stat-note">faster-whisper와 edge-tts를 로컬 처리로 구성해 반복 사용 비용을 낮췄습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="inner fade-in">
+        <p class="label">projects</p>
+        <h2>작지만 실제로 굴러가는 프로젝트를 만들고 있습니다.</h2>
+
+        <div class="projects-grid">
+          <article class="project-card featured">
+            <div class="project-visual" aria-label="ARIA 시스템 아키텍처">
+              <div class="arch">
+
+                <div class="arch-layer">
+                  <div class="arch-node accent">
+                    <div class="arch-label">Android</div>
+                    <div class="arch-sub">일정 · 할일 · 알람 UI</div>
+                    <div class="arch-sub">Capture 텍스트 전송</div>
+                  </div>
+                  <div class="arch-node accent">
+                    <div class="arch-label">iOS</div>
+                    <div class="arch-sub">브리핑 대시보드</div>
+                    <div class="arch-sub">캡처 · 인사이트</div>
+                  </div>
+                  <div class="arch-node accent">
+                    <div class="arch-label">PC Voice</div>
+                    <div class="arch-sub">Wake word 감지</div>
+                    <div class="arch-sub">Whisper STT · TTS</div>
+                  </div>
+                </div>
+
+                <div class="arch-arrow">↓</div>
+                <div style="display:flex;justify-content:center;margin:-4px 0 3px">
+                  <span class="arch-badge">HTTP · WiFi / Tailscale VPN</span>
+                </div>
+                <div class="arch-arrow" style="margin-top:-2px">↓</div>
+
+                <div class="arch-node server">
+                  <div class="arch-label">Mac mini — FastAPI Server</div>
+
+                  <div class="arch-nlp">
+                    <div class="arch-nlp-step">Rule<br><span class="arch-nlp-free">0ms · 무료</span></div>
+                    <div class="arch-nlp-arrow">→</div>
+                    <div class="arch-nlp-step">ML<br><span class="arch-nlp-free">10ms · 무료</span></div>
+                    <div class="arch-nlp-arrow">→</div>
+                    <div class="arch-nlp-step">GPT<br><span style="font-size:9px;color:var(--amber)">필요시만</span></div>
+                  </div>
+
+                  <div class="arch-row-inner">
+                    <div class="arch-node" style="padding:8px 10px;gap:2px">
+                      <div style="font-size:10px;font-weight:700;color:var(--ink)">Services</div>
+                      <div class="arch-sub">Agenda · Planning</div>
+                      <div class="arch-sub">Weather · Route</div>
+                      <div class="arch-sub">Alarm Worker</div>
+                    </div>
+                    <div class="arch-node" style="padding:8px 10px;gap:2px">
+                      <div style="font-size:10px;font-weight:700;color:var(--ink)">SQLite DB</div>
+                      <div class="arch-sub">Events · Tasks</div>
+                      <div class="arch-sub">Alarms · Memos</div>
+                      <div class="arch-sub">QA Cache</div>
+                    </div>
+                  </div>
+
+                  <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:2px">
+                    <span class="arch-badge green">GPT 호출 90% 절감</span>
+                    <span class="arch-badge green">시맨틱 캐시</span>
+                    <span class="arch-badge">Watchdog · 자동백업</span>
+                  </div>
+                </div>
+
+                <div class="arch-arrow">↓</div>
+
+                <div class="arch-layer">
+                  <div class="arch-node ext">
+                    <div class="arch-label">OpenAI</div>
+                    <div class="arch-sub">GPT-4o-mini · Whisper</div>
+                    <div class="arch-sub">신뢰도 미달 시만</div>
+                  </div>
+                  <div class="arch-node ext">
+                    <div class="arch-label">Weather API</div>
+                    <div class="arch-sub">기상청 연동</div>
+                    <div class="arch-sub">외출 브리핑 생성</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Kotlin</span>
+                <span class="tag">Docker</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">NLP</span>
+                <span class="tag">iOS</span>
+                <span class="tag">Android</span>
+              </div>
+              <h3>ARIA Home AI</h3>
+              <p class="project-desc">
+                말 한마디로 일정 조회, 알람 설정, 브리핑, 날씨, 이동 준비를 처리하는 개인 홈 AI 비서입니다.
+                PC 음성 클라이언트와 Mac mini 서버를 분리해, 실제 집 안에서 계속 켜두고 쓰는 구조를 만들고 있습니다.
+              </p>
+              <ul class="project-highlights">
+                <li>faster-whisper와 edge-tts로 STT/TTS 비용을 기본 0원화</li>
+                <li>형태소 분석기 없이 char_wb 2~4 n-gram TF-IDF로 한국어 의도 분류</li>
+                <li>Rule - ML - GPT 3단 필터로 내부 테스트 기준 GPT 필요 케이스 2/18까지 축소</li>
+                <li>Mac mini 서버, iOS/Android 앱, PC 음성 클라이언트를 FastAPI로 연동</li>
+                <li>사용량 대시보드, PostgreSQL, watchdog, 백업/진단 API로 운영 안정성 개선</li>
+              </ul>
+              <div class="project-actions">
+                <button class="text-link" type="button" data-open-modal>자세히 보기</button>
+                <a class="text-link" href="https://github.com/seopyi/aira-home-ai" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual" aria-label="Flow-Work 협업 플랫폼 구조">
+              <div class="mini-screen">
+                <div class="mini-head">
+                  <span>Flow-Work</span>
+                  <span>workspace</span>
+                </div>
+                <div class="mini-body">
+                  <div class="mini-line blue"></div>
+                  <div class="mini-line short"></div>
+                  <div class="mini-line"></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px">
+                    <div style="border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff">
+                      <div class="mini-line blue" style="width:64%"></div>
+                      <div class="mini-line short" style="margin-top:9px"></div>
+                      <div class="mini-line" style="margin-top:9px;width:72%"></div>
+                    </div>
+                    <div style="border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff">
+                      <div class="mini-line" style="width:48%"></div>
+                      <div class="mini-line blue" style="margin-top:9px;width:76%"></div>
+                      <div class="mini-line short" style="margin-top:9px;width:58%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="tags">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">NestJS</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Yjs</span>
+                <span class="tag">Electron</span>
+                <span class="tag">Docker</span>
+              </div>
+              <h3>Flow-Work</h3>
+              <p class="project-desc">
+                문서, 화이트보드, 회의록, 코드 작업을 한 워크스페이스에서 다루는 협업형 작업 플랫폼입니다.
+                실시간 문서 편집과 다중 문서 창, AI 어시스턴트, Git 작업 흐름, 데스크톱 앱까지 연결한 구조로 개발했습니다.
+              </p>
+              <ul class="project-highlights">
+                <li>React, Zustand, BlockNote/TipTap, Yjs를 이용해 실시간 협업 문서 편집 환경 구현</li>
+                <li>다중 문서 창에서 창 상태와 문서 세션을 분리하고 React.memo, requestAnimationFrame으로 리렌더링 부담 완화</li>
+                <li>화이트보드 이미지가 새로고침/다른 브라우저에서 깨지는 문제를 추적하고 S3 기반 asset 저장, 복원, 정리 구조로 개선</li>
+                <li>문서 내용을 AI가 검색할 수 있도록 projection/embedding job, stale projection 갱신, embedding 재사용 흐름 설계</li>
+                <li>Space별 읽기/쓰기/승인 권한과 freeze 승인 정책을 분리해 문서 고정 및 검토 흐름 구현</li>
+                <li>로컬 Git Agent와 연동해 commit, diff, merge request review를 워크스페이스 안에서 확인하는 작업창 구현</li>
+                <li>FastAPI AI 서버에서 Google GenAI, 임베딩, SSE 스트리밍 응답을 분리된 서비스로 처리</li>
+                <li>Docker Compose와 Nginx 게이트웨이로 client, server, ai-server를 로컬/배포 환경에서 함께 실행</li>
+              </ul>
+              <div class="project-actions">
+                <button class="text-link" type="button" data-open-flow-modal>자세히 보기</button>
+                <a class="text-link" href="https://github.com/DeveloperEveLsw/Flow-Work" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="skills">
+      <div class="inner fade-in">
+        <p class="label">skills</p>
+        <h2>주로 Python 백엔드와 AI 서비스 흐름을 중심으로 만들고 있습니다.</h2>
+        <div class="skills-wrap">
+          <div class="skill-group">
+            <div class="skill-title">Language</div>
+            <div class="skill-list">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">JavaScript</span>
+              <span class="skill-chip">Kotlin</span>
+              <span class="skill-chip">SQL</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">Backend / AI</div>
+            <div class="skill-list">
+              <span class="skill-chip">FastAPI</span>
+              <span class="skill-chip">Korean NLP (자체 설계)</span>
+              <span class="skill-chip">STT/TTS 파이프라인</span>
+              <span class="skill-chip">LLM 연동</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">Infra / Data</div>
+            <div class="skill-list">
+              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">PostgreSQL</span>
+              <span class="skill-chip">SQLite</span>
+              <span class="skill-chip">Git</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-title">Client</div>
+            <div class="skill-list">
+              <span class="skill-chip">HTML/CSS</span>
+              <span class="skill-chip">React</span>
+              <span class="skill-chip">Android</span>
+              <span class="skill-chip">REST API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="career">
+      <div class="inner fade-in">
+        <p class="label">career & education</p>
+        <h2>전공 지식을 실제 프로젝트로 옮기며 배우고 있습니다.</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2022 - 현재<br />2027.02 졸업 예정</div>
+            <div>
+              <div class="timeline-role">부천대학교 컴퓨터소프트웨어학과 재학</div>
+              <p class="timeline-desc">
+                자료구조, 알고리즘, 운영체제, 소프트웨어 설계 등 전공 과목을 학습하고 있습니다.
+                재학 중 개인 프로젝트로 ARIA Home AI를 기획하고 개발하며, 백엔드와 AI 서비스 구조를 실제로 적용해보고 있습니다.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026<br />개인 프로젝트</div>
+            <div>
+              <div class="timeline-role">ARIA Home AI 서버 분리 및 운영 구조 개선</div>
+              <p class="timeline-desc">
+                PC 클라이언트에 몰려 있던 로직을 FastAPI 서버로 옮기고, Mac mini 서버, Docker, PostgreSQL,
+                사용량 대시보드, watchdog, 백업/진단 API를 추가해 운영 가능한 형태로 개선했습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="contact">
+      <div class="inner fade-in">
+        <div class="contact-card">
+          <p class="label">contact</p>
+          <h2>작게라도 끝까지 동작하게 만드는 개발자가 되고 싶습니다.</h2>
+          <p>
+            ARIA 프로젝트의 구조, 비용 절감, 서버 운영, 버그 해결 과정은 더 자세히 설명할 수 있습니다.
+            코드는 GitHub에서 확인하실 수 있습니다.
+          </p>
+          <div class="actions" style="justify-content:center">
+            <a class="btn btn-primary" href="https://github.com/seopyi" target="_blank" rel="noreferrer">GitHub 보기</a>
+            <button class="btn btn-ghost" type="button" data-open-modal>ARIA 상세 보기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>2026 Lee Hoseop</span>
+    <span>Portfolio for backend, AI service, and practical automation.</span>
+  </footer>
+
+  <div class="modal-overlay" id="aria-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <div class="modal-head">
+        <span class="modal-small">ARIA Home AI details</span>
+        <button class="modal-close" type="button" data-close-modal aria-label="닫기">X</button>
+      </div>
+
+      <div class="modal-body">
+        <article class="slide active">
+          <div class="slide-grid">
+            <div>
+              <p class="label">01 project</p>
+              <h2 class="slide-title" id="modal-title">말 한마디가 실제 일정과 알람으로 이어지는 AI 비서</h2>
+              <p class="slide-copy">
+                ARIA는 단순 챗봇이 아니라, 음성 입력을 받아 일정, 알람, 브리핑, 날씨, 이동 준비로 연결하는 개인 홈 AI 비서입니다.
+                처음에는 PC에서 시작했지만, 운영을 위해 서버와 클라이언트 역할을 나누었습니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">client</div>
+                <div class="detail-title">PC 음성 클라이언트</div>
+                <p class="detail-text">웨이크워드, 마이크 녹음, 로컬 STT/TTS, 스피커 출력, 로컬 장치 제어를 담당합니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">server</div>
+                <div class="detail-title">Mac mini FastAPI 서버</div>
+                <p class="detail-text">일정, 알람, 플래너, 브리핑, DB, 운영 진단, 사용량 기록을 중앙에서 처리합니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">mobile</div>
+                <div class="detail-title">Android 동반 앱</div>
+                <p class="detail-text">음성으로 만든 일정과 알람을 모바일에서 확인하는 방향으로 확장 중입니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="slide-grid">
+            <div>
+              <p class="label">02 nlp</p>
+              <h2 class="slide-title">형태소 분석기 없이 한국어 명령을 분류했습니다.</h2>
+              <p class="slide-copy">
+                KoNLPy나 Mecab 같은 형태소 분석기를 붙이지 않고, scikit-learn의 TF-IDF와 Naive Bayes로
+                가벼운 한국어 의도 분류기를 만들었습니다. 한국어 어절 안의 문자 패턴이 의미를 담고 있다는 점을 이용했습니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">feature</div>
+                <div class="detail-title">char_wb n-gram 2~4 + TF-IDF</div>
+                <p class="detail-text">한국어는 조사와 어미가 붙기 때문에 단어 경계가 애매합니다. 문자 단위 n-gram을 쓰면 “예약해줘”, “예약”, “바꿔줘”처럼 어절 안에 숨어 있는 패턴을 형태소 분석 없이 잡을 수 있습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">classifier</div>
+                <div class="detail-title">Multinomial Naive Bayes</div>
+                <p class="detail-text">학습 데이터가 많지 않은 개인 프로젝트 단계라, 작고 빠르게 학습되는 Naive Bayes를 선택했습니다. 서버 기본 실행은 룰 기반으로도 가능하게 두고, 모델이 있으면 ML confidence를 함께 반영합니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">override</div>
+                <div class="detail-title">Action Override 레이어</div>
+                <p class="detail-text">“치과 예약 4시로 바꿔줘”처럼 명사 점수가 높아 일정 추가로 오분류되는 문제를 보고, “바꿔줘/취소해줘” 같은 액션 동사를 명사보다 먼저 보는 override 레이어를 추가했습니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="slide-grid">
+            <div>
+              <p class="label">03 cost</p>
+              <h2 class="slide-title">GPT는 마지막에만 쓰도록 처리 경로를 나눴습니다.</h2>
+              <p class="slide-copy">
+                모든 요청을 GPT로 보내면 구현은 쉽지만 매일 쓰는 개인 비서에는 비용과 지연 시간이 부담입니다.
+                그래서 결정론적 룰, ML 분류기, GPT 폴백을 역할별로 나누고, 유사 질문은 캐시로 재사용했습니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">filter</div>
+                <div class="detail-title">Rule - ML - GPT 3단 필터</div>
+                <p class="detail-text">Rule은 동사 기반으로 즉시 처리하고, ML은 학습된 표현을 10ms 이하로 분류하며, GPT는 정말 애매한 요청만 맡깁니다. 내부 테스트 18개 기준 GPT 필요 케이스는 2개였습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">cache</div>
+                <div class="detail-title">QA 시맨틱 캐시</div>
+                <p class="detail-text">임베딩 API를 새로 쓰지 않고, NLP 파이프라인에서 쓰는 TF-IDF 벡터라이저를 재활용해 유사 질문을 찾습니다. 유사도 0.82 이상이면 GPT 호출 없이 이전 답변을 반환합니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">side channel</div>
+                <div class="detail-title">&lt;!-- SAVE:... --&gt; 구조화 마커</div>
+                <p class="detail-text">사용자에게 보이는 답변 말투는 유지하면서, 저장 가능한 목록은 HTML 주석 마커로 백엔드에 전달합니다. UX를 건드리지 않고 저장 동작을 추가한 사이드채널입니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="slide-grid">
+            <div>
+              <p class="label">04 server</p>
+              <h2 class="slide-title">클라우드 서버비를 쓰기 전에, Mac mini를 홈 서버로 운영했습니다.</h2>
+              <p class="slide-copy">
+                개인 프로젝트 단계에서 매달 서버비를 쓰기보다 집에 있는 Mac mini를 활용했습니다.
+                Docker로 서버를 올리고, PostgreSQL과 백그라운드 스레드를 붙여 계속 켜둘 수 있는 형태를 만들었습니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">runtime</div>
+                <div class="detail-title">알람 워커와 프로액티브 스케줄러</div>
+                <p class="detail-text">알람 워커는 주기적으로 DB를 확인하고, 스케줄러는 중요한 일정 전 사전 알림을 만듭니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">watchdog</div>
+                <div class="detail-title">죽은 스레드 자동 복구</div>
+                <p class="detail-text">알람이나 스케줄러 스레드가 죽었는지 감시하고, 문제가 생기면 다시 시작하도록 구성했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">backup</div>
+                <div class="detail-title">백업과 서버 진단 API</div>
+                <p class="detail-text">DB 백업, 런타임 상태, TTS 브리지 상태 등을 확인할 수 있는 관리용 API를 추가했습니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class=”slide”>
+          <p class=”label”>05 bug fixing</p>
+          <h2 class=”slide-title”>기억에 남는 버그 해결 사례</h2>
+          <p class=”slide-copy”>
+            실제로 쓰면서 만난 버그들은 설계 단계에서 예상하지 못했던 것들이었습니다.
+            특히 NLP 분류기에서 발생한 문제들은 단순 키워드 매칭의 한계를 직접 경험하게 해줬습니다.
+          </p>
+          <div class=”bug-grid”>
+            <div class=”bug”>
+              <div class=”bug-box problem”>
+                <div class=”detail-kicker”>problem</div>
+                <div class=”detail-title”>공백 정규화 후 키워드 중복 카운트</div>
+                <p class=”detail-text”>”할일”과 “할 일”을 공백 제거 후 비교하면 같은 문자열이 되는데, 둘 다 키워드 목록에 있어 TASK_ADD가 4점, TASK_QUERY가 3점으로 잘못 분류됐습니다.</p>
+              </div>
+              <div class=”bug-box solution”>
+                <div class=”detail-kicker”>solution</div>
+                <div class=”detail-title”>인텐트별 seen_clean 셋으로 중복 제거</div>
+                <p class=”detail-text”>각 인텐트 채점 시 공백 제거된 키워드를 <code>seen_clean</code> 셋에 추가해, 같은 문자열이 여러 번 매칭되더라도 한 번만 점수에 반영되도록 수정했습니다.</p>
+              </div>
+            </div>
+            <div class=”bug”>
+              <div class=”bug-box problem”>
+                <div class=”detail-kicker”>problem</div>
+                <div class=”detail-title”>동사 키워드 가중치가 명사 누적에 짐</div>
+                <p class=”detail-text”>”바꿔줘”(3글자 → 가중치 2)보다 “치과”(2pt) + “예약”(2pt) = 4점이 높아, “치과 예약 바꿔줘”가 EVENT_UPDATE가 아닌 EVENT_ADD로 분류됐습니다.</p>
+              </div>
+              <div class=”bug-box solution”>
+                <div class=”detail-kicker”>solution</div>
+                <div class=”detail-title”>_ACTION_OVERRIDES 레이어로 선행 확정</div>
+                <p class=”detail-text”>수정·취소·완료 같은 액션 동사가 감지되면 키워드 점수 계산 전에 인텐트를 확정(confidence 0.88)하는 별도 레이어를 추가해 명사 누적 문제를 구조적으로 차단했습니다.</p>
+              </div>
+            </div>
+            <div class=”bug”>
+              <div class=”bug-box problem”>
+                <div class=”detail-kicker”>problem</div>
+                <div class=”detail-title”>GPT 응답에서 저장할 항목만 뽑기 어려움</div>
+                <p class=”detail-text”>”파스타 만들려면 뭐 필요해? 그거 메모해줘”처럼 자유 형식 GPT 답변에서 재료 목록만 구조화해 DB에 저장해야 했습니다. JSON 모드를 쓰면 자연스러운 대화체가 깨집니다.</p>
+              </div>
+              <div class=”bug-box solution”>
+                <div class=”detail-kicker”>solution</div>
+                <div class=”detail-title”>숨겨진 HTML 주석으로 구조 데이터 채널 분리</div>
+                <p class=”detail-text”>GPT 프롬프트에 목록이 있으면 답변 끝에 <code>&lt;!-- SAVE:제목|항목1,항목2 --&gt;</code> 마커를 붙이도록 지시하고, 서버에서 파싱 후 제거해 사용자에겐 자연스러운 텍스트만 전달했습니다.</p>
+              </div>
+            </div>
+            <div class=”bug”>
+              <div class=”bug-box problem”>
+                <div class=”detail-kicker”>problem</div>
+                <div class=”detail-title”>”그거 메모해줘”에서 '그거'가 무엇인지 모름</div>
+                <p class=”detail-text”>HTTP는 stateless라 직전 GPT 응답이 다음 요청에 전달되지 않습니다. “그거”가 가리키는 내용을 서버가 알 수 없었습니다.</p>
+              </div>
+              <div class=”bug-box solution”>
+                <div class=”detail-kicker”>solution</div>
+                <div class=”detail-title”>세션 인메모리 saveable + history 역순 파싱</div>
+                <p class=”detail-text”>SAVE 마커 파싱 시 <code>_session_saveable[session_id]</code>에 저장해두고, CONTEXT_SAVE 인텐트가 오면 해당 세션 항목을 꺼냅니다. 세션 데이터가 없으면 history를 역순으로 탐색해 직전 assistant 메시지에서 목록 라인을 추출합니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="modal-foot">
+        <div class="dots" aria-label="슬라이드 선택"></div>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" type="button" data-prev>이전</button>
+          <button class="btn btn-primary" type="button" data-next>다음</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="flow-modal" role="dialog" aria-modal="true" aria-labelledby="flow-modal-title">
+    <div class="modal">
+      <div class="modal-head">
+        <span class="modal-small">Flow-Work details</span>
+        <button class="modal-close" type="button" data-close-flow-modal aria-label="닫기">X</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="slide-grid">
+          <div>
+            <p class="label">collaboration platform</p>
+            <h2 class="slide-title" id="flow-modal-title">문서, 화이트보드, 코드 작업을 한 화면에서 다루는 협업 워크스페이스</h2>
+            <p class="slide-copy">
+              Flow-Work는 단순 문서 앱이 아니라, 실시간 문서 편집, 화이트보드, 회의록, Git 작업 흐름, AI 어시스턴트를 한 워크스페이스 안에 묶은 프로젝트입니다.
+              프론트엔드부터 NestJS 서버, FastAPI AI 서버, Supabase DB, Electron 데스크톱 앱까지 직접 연결했습니다.
+            </p>
+          </div>
+          <div class="detail-list">
+            <div class="detail">
+              <div class="detail-kicker">problem</div>
+              <div class="detail-title">다중 문서 창에서 무거운 에디터가 자주 리렌더링됨</div>
+              <p class="detail-text">
+                창 이동, 리사이즈, 포커스 변경이 발생할 때 문서 에디터까지 영향을 받아 UX가 흔들리는 문제가 있었습니다.
+                창의 위치/크기 상태와 문서 세션을 분리하고, React.memo와 requestAnimationFrame 기반 좌표 업데이트로 렌더 부담을 줄였습니다.
+              </p>
+            </div>
+            <div class="detail">
+              <div class="detail-kicker">whiteboard</div>
+              <div class="detail-title">화이트보드 이미지 복원 문제 분석 및 asset 구조 개선</div>
+              <p class="detail-text">
+                Excalidraw + Yjs 환경에서 이미지가 새로고침 후 placeholder로 보이거나 사용자별 scene이 달라질 수 있는 문제를 추적했습니다.
+                파일 저장 키, Yjs 동기화, storage 복원 책임을 나누는 방향으로 구조를 정리했습니다.
+              </p>
+            </div>
+            <div class="detail">
+              <div class="detail-kicker">ai search</div>
+              <div class="detail-title">문서를 AI가 검색할 수 있는 projection/embedding 파이프라인</div>
+              <p class="detail-text">
+                Yjs 문서 상태를 검색 가능한 plain text와 chunk로 변환하고, projection job과 embedding job으로 분리했습니다.
+                stale projection 갱신, 실패 job 재시도, 기존 embedding 재사용 흐름까지 고려했습니다.
+              </p>
+            </div>
+            <div class="detail">
+              <div class="detail-kicker">workflow</div>
+              <div class="detail-title">권한, freeze 승인, Git 작업 흐름을 워크스페이스에 통합</div>
+              <p class="detail-text">
+                Space별 읽기/쓰기/승인 권한을 나누고, 문서 고정 요청과 승인 흐름을 구현했습니다.
+                로컬 Git Agent를 통해 commit, diff, merge request review도 별도 도구 없이 확인할 수 있게 연결했습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <span class="modal-small">React · NestJS · FastAPI · Supabase · Yjs · Electron · Docker</span>
+        <div class="modal-actions">
+          <a class="btn btn-primary" href="https://github.com/DeveloperEveLsw/Flow-Work" target="_blank" rel="noreferrer">GitHub 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const fadeItems = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeItems.forEach((item) => observer.observe(item));
+
+    const modal = document.getElementById("aria-modal");
+    const flowModal = document.getElementById("flow-modal");
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const dotsWrap = document.querySelector(".dots");
+    const prevButton = document.querySelector("[data-prev]");
+    const nextButton = document.querySelector("[data-next]");
+    let currentSlide = 0;
+
+    const dots = slides.map((_, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "dot-button";
+      dot.setAttribute("aria-label", `${index + 1}번 설명 보기`);
+      dot.addEventListener("click", () => setSlide(index));
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function setSlide(index) {
+      currentSlide = Math.max(0, Math.min(slides.length - 1, index));
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === currentSlide);
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === currentSlide);
+      });
+      prevButton.style.visibility = currentSlide === 0 ? "hidden" : "visible";
+      nextButton.textContent = currentSlide === slides.length - 1 ? "처음으로" : "다음";
+    }
+
+    function openModal() {
+      modal.classList.add("open");
+      document.body.classList.add("modal-open");
+      setSlide(0);
+      nextButton.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.classList.remove("modal-open");
+    }
+
+    function openFlowModal() {
+      flowModal.classList.add("open");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeFlowModal() {
+      flowModal.classList.remove("open");
+      document.body.classList.remove("modal-open");
+    }
+
+    document.querySelectorAll("[data-open-modal]").forEach((button) => {
+      button.addEventListener("click", openModal);
+    });
+
+    document.querySelector("[data-close-modal]").addEventListener("click", closeModal);
+    document.querySelectorAll("[data-open-flow-modal]").forEach((button) => {
+      button.addEventListener("click", openFlowModal);
+    });
+    document.querySelector("[data-close-flow-modal]").addEventListener("click", closeFlowModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    });
+    flowModal.addEventListener("click", (event) => {
+      if (event.target === flowModal) closeFlowModal();
+    });
+
+    prevButton.addEventListener("click", () => setSlide(currentSlide - 1));
+    nextButton.addEventListener("click", () => {
+      if (currentSlide === slides.length - 1) setSlide(0);
+      else setSlide(currentSlide + 1);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (!modal.classList.contains("open")) return;
+      if (event.key === "Escape") closeModal();
+      if (event.key === "ArrowLeft") setSlide(currentSlide - 1);
+      if (event.key === "ArrowRight" && currentSlide < slides.length - 1) {
+        setSlide(currentSlide + 1);
+      }
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (!flowModal.classList.contains("open")) return;
+      if (event.key === "Escape") closeFlowModal();
+    });
+
+    setSlide(0);
+  </script>
+</body>
+</html>
