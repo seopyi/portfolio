@@ -370,6 +370,9 @@
     .stat {
       position: relative;
       overflow: hidden;
+      min-height: 178px;
+      display: flex;
+      flex-direction: column;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--surface);
@@ -604,11 +607,81 @@
     .diagram-arrow { display: none; }
 
     .mini-screen {
-      width: min(360px, 100%);
+      width: min(390px, 100%);
       border: 1px solid #d2cabf;
       border-radius: 10px;
       background: var(--surface);
       overflow: hidden;
+      box-shadow: 0 16px 34px rgba(31, 28, 22, 0.08);
+    }
+
+    .flow-arch {
+      width: min(430px, 100%);
+      display: grid;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .flow-arch-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .flow-arch-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .flow-arch-node {
+      min-height: 78px;
+      border: 1px solid rgba(36, 89, 214, 0.22);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.76);
+      padding: 11px 12px;
+    }
+
+    .flow-arch-node.main {
+      min-height: 106px;
+      border-color: rgba(36, 89, 214, 0.36);
+      background: rgba(232, 238, 252, 0.42);
+    }
+
+    .flow-arch-node.green {
+      border-color: rgba(24, 133, 104, 0.28);
+      background: rgba(24, 133, 104, 0.06);
+    }
+
+    .flow-arch-title {
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .flow-arch-sub {
+      color: var(--soft);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .flow-arch-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--accent);
+    }
+
+    .flow-arch-line::before,
+    .flow-arch-line::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: rgba(36, 89, 214, 0.20);
     }
 
     .mini-head {
@@ -917,6 +990,14 @@
       display: block;
     }
 
+    .flow-slide {
+      display: none;
+    }
+
+    .flow-slide.active {
+      display: block;
+    }
+
     .slide-grid {
       display: grid;
       grid-template-columns: 0.9fr 1fr;
@@ -1001,7 +1082,8 @@
       border-left: 3px solid var(--green);
     }
 
-    .dots {
+    .dots,
+    .flow-dots {
       display: flex;
       gap: 7px;
     }
@@ -1075,8 +1157,17 @@
         border-bottom: 1px solid var(--line);
       }
 
+      .flow-arch-row,
+      .flow-arch-row.three {
+        grid-template-columns: 1fr;
+      }
+
       .skills-wrap {
         grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-height: auto;
       }
     }
 
@@ -1220,22 +1311,22 @@
           </div>
           <div class="stats">
             <div class="stat">
-              <div class="stat-kicker">education</div>
-              <div class="stat-num">3학년</div>
-              <div class="stat-label">컴퓨터소프트웨어학과 재학</div>
-              <p class="stat-note">전공 수업에서 배운 구조를 개인 프로젝트로 직접 옮겨보고 있습니다.</p>
+              <div class="stat-kicker">build</div>
+              <div class="stat-num">실사용</div>
+              <div class="stat-label">제가 직접 쓰는 문제에서 출발해 끝까지 구현합니다.</div>
+              <p class="stat-note">음성 비서, 협업 문서, 다중 창, AI 검색처럼 실제 사용 흐름이 있는 기능을 작게 만들고 계속 고칩니다.</p>
             </div>
             <div class="stat">
               <div class="stat-kicker">operation</div>
-              <div class="stat-num">24/7</div>
-              <div class="stat-label">Mac mini 서버 상시 운영 구조 설계</div>
-              <p class="stat-note">Docker, watchdog, 백업/진단 API를 붙여 계속 켜둘 수 있는 형태로 개선했습니다.</p>
+              <div class="stat-num">운영</div>
+              <div class="stat-label">만들고 끝내지 않고 계속 켜둘 수 있는 구조를 고민합니다.</div>
+              <p class="stat-note">Mac mini 서버, Docker, watchdog, 백업/진단 API를 붙이며 개발 이후의 실행 환경까지 다뤄봤습니다.</p>
             </div>
             <div class="stat">
-              <div class="stat-kicker">cost</div>
-              <div class="stat-num">0원</div>
-              <div class="stat-label">기본 음성 STT/TTS API 비용 절감</div>
-              <p class="stat-note">faster-whisper와 edge-tts를 로컬 처리로 구성해 반복 사용 비용을 낮췄습니다.</p>
+              <div class="stat-kicker">debugging</div>
+              <div class="stat-num">개선</div>
+              <div class="stat-label">불편한 지점을 그냥 넘기지 않고 구조를 바꿔 해결합니다.</div>
+              <p class="stat-note">리렌더링, 의도 분류 오탐, 화이트보드 동기화, AI 검색 지연 같은 문제를 원인부터 좁혀봤습니다.</p>
             </div>
           </div>
         </div>
@@ -1356,28 +1447,56 @@
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card featured">
             <div class="project-visual" aria-label="Flow-Work 협업 플랫폼 구조">
-              <div class="mini-screen">
-                <div class="mini-head">
-                  <span>Flow-Work</span>
-                  <span>workspace</span>
+              <div class="flow-arch">
+                <div class="flow-arch-row three">
+                  <div class="flow-arch-node">
+                    <div class="flow-arch-title">Documents</div>
+                    <div class="flow-arch-sub">BlockNote · TipTap</div>
+                    <div class="flow-arch-sub">Yjs realtime edit</div>
+                  </div>
+                  <div class="flow-arch-node">
+                    <div class="flow-arch-title">Whiteboard</div>
+                    <div class="flow-arch-sub">Excalidraw scene</div>
+                    <div class="flow-arch-sub">asset restore</div>
+                  </div>
+                  <div class="flow-arch-node">
+                    <div class="flow-arch-title">Git Work</div>
+                    <div class="flow-arch-sub">commit · diff</div>
+                    <div class="flow-arch-sub">review window</div>
+                  </div>
                 </div>
-                <div class="mini-body">
-                  <div class="mini-line blue"></div>
-                  <div class="mini-line short"></div>
-                  <div class="mini-line"></div>
-                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px">
-                    <div style="border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff">
-                      <div class="mini-line blue" style="width:64%"></div>
-                      <div class="mini-line short" style="margin-top:9px"></div>
-                      <div class="mini-line" style="margin-top:9px;width:72%"></div>
-                    </div>
-                    <div style="border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff">
-                      <div class="mini-line" style="width:48%"></div>
-                      <div class="mini-line blue" style="margin-top:9px;width:76%"></div>
-                      <div class="mini-line short" style="margin-top:9px;width:58%"></div>
-                    </div>
+
+                <div class="flow-arch-line">workspace UI</div>
+
+                <div class="flow-arch-row">
+                  <div class="flow-arch-node main">
+                    <div class="flow-arch-title">NestJS API</div>
+                    <div class="flow-arch-sub">permission · freeze policy</div>
+                    <div class="flow-arch-sub">WebSocket collaboration</div>
+                    <div class="flow-arch-sub">projection / embedding jobs</div>
+                  </div>
+                  <div class="flow-arch-node main">
+                    <div class="flow-arch-title">FastAPI AI Server</div>
+                    <div class="flow-arch-sub">Google GenAI</div>
+                    <div class="flow-arch-sub">SSE streaming</div>
+                    <div class="flow-arch-sub">embedding endpoint</div>
+                  </div>
+                </div>
+
+                <div class="flow-arch-line">data & runtime</div>
+
+                <div class="flow-arch-row">
+                  <div class="flow-arch-node green">
+                    <div class="flow-arch-title">Supabase</div>
+                    <div class="flow-arch-sub">Auth · PostgreSQL</div>
+                    <div class="flow-arch-sub">Storage · migrations</div>
+                  </div>
+                  <div class="flow-arch-node green">
+                    <div class="flow-arch-title">Electron · Docker</div>
+                    <div class="flow-arch-sub">desktop package</div>
+                    <div class="flow-arch-sub">Nginx gateway</div>
                   </div>
                 </div>
               </div>
@@ -1644,60 +1763,60 @@
           </div>
         </article>
 
-        <article class=”slide”>
-          <p class=”label”>05 bug fixing</p>
-          <h2 class=”slide-title”>기억에 남는 버그 해결 사례</h2>
-          <p class=”slide-copy”>
+        <article class="slide">
+          <p class="label">05 bug fixing</p>
+          <h2 class="slide-title">기억에 남는 버그 해결 사례</h2>
+          <p class="slide-copy">
             실제로 쓰면서 만난 버그들은 설계 단계에서 예상하지 못했던 것들이었습니다.
             특히 NLP 분류기에서 발생한 문제들은 단순 키워드 매칭의 한계를 직접 경험하게 해줬습니다.
           </p>
-          <div class=”bug-grid”>
-            <div class=”bug”>
-              <div class=”bug-box problem”>
-                <div class=”detail-kicker”>problem</div>
-                <div class=”detail-title”>공백 정규화 후 키워드 중복 카운트</div>
-                <p class=”detail-text”>”할일”과 “할 일”을 공백 제거 후 비교하면 같은 문자열이 되는데, 둘 다 키워드 목록에 있어 TASK_ADD가 4점, TASK_QUERY가 3점으로 잘못 분류됐습니다.</p>
+          <div class="bug-grid">
+            <div class="bug">
+              <div class="bug-box problem">
+                <div class="detail-kicker">problem</div>
+                <div class="detail-title">공백 정규화 후 키워드 중복 카운트</div>
+                <p class="detail-text">”할일”과 “할 일”을 공백 제거 후 비교하면 같은 문자열이 되는데, 둘 다 키워드 목록에 있어 TASK_ADD가 4점, TASK_QUERY가 3점으로 잘못 분류됐습니다.</p>
               </div>
-              <div class=”bug-box solution”>
-                <div class=”detail-kicker”>solution</div>
-                <div class=”detail-title”>인텐트별 seen_clean 셋으로 중복 제거</div>
-                <p class=”detail-text”>각 인텐트 채점 시 공백 제거된 키워드를 <code>seen_clean</code> 셋에 추가해, 같은 문자열이 여러 번 매칭되더라도 한 번만 점수에 반영되도록 수정했습니다.</p>
-              </div>
-            </div>
-            <div class=”bug”>
-              <div class=”bug-box problem”>
-                <div class=”detail-kicker”>problem</div>
-                <div class=”detail-title”>동사 키워드 가중치가 명사 누적에 짐</div>
-                <p class=”detail-text”>”바꿔줘”(3글자 → 가중치 2)보다 “치과”(2pt) + “예약”(2pt) = 4점이 높아, “치과 예약 바꿔줘”가 EVENT_UPDATE가 아닌 EVENT_ADD로 분류됐습니다.</p>
-              </div>
-              <div class=”bug-box solution”>
-                <div class=”detail-kicker”>solution</div>
-                <div class=”detail-title”>_ACTION_OVERRIDES 레이어로 선행 확정</div>
-                <p class=”detail-text”>수정·취소·완료 같은 액션 동사가 감지되면 키워드 점수 계산 전에 인텐트를 확정(confidence 0.88)하는 별도 레이어를 추가해 명사 누적 문제를 구조적으로 차단했습니다.</p>
+              <div class="bug-box solution">
+                <div class="detail-kicker">solution</div>
+                <div class="detail-title">인텐트별 seen_clean 셋으로 중복 제거</div>
+                <p class="detail-text">각 인텐트 채점 시 공백 제거된 키워드를 <code>seen_clean</code> 셋에 추가해, 같은 문자열이 여러 번 매칭되더라도 한 번만 점수에 반영되도록 수정했습니다.</p>
               </div>
             </div>
-            <div class=”bug”>
-              <div class=”bug-box problem”>
-                <div class=”detail-kicker”>problem</div>
-                <div class=”detail-title”>GPT 응답에서 저장할 항목만 뽑기 어려움</div>
-                <p class=”detail-text”>”파스타 만들려면 뭐 필요해? 그거 메모해줘”처럼 자유 형식 GPT 답변에서 재료 목록만 구조화해 DB에 저장해야 했습니다. JSON 모드를 쓰면 자연스러운 대화체가 깨집니다.</p>
+            <div class="bug">
+              <div class="bug-box problem">
+                <div class="detail-kicker">problem</div>
+                <div class="detail-title">동사 키워드 가중치가 명사 누적에 짐</div>
+                <p class="detail-text">”바꿔줘”(3글자 → 가중치 2)보다 “치과”(2pt) + “예약”(2pt) = 4점이 높아, “치과 예약 바꿔줘”가 EVENT_UPDATE가 아닌 EVENT_ADD로 분류됐습니다.</p>
               </div>
-              <div class=”bug-box solution”>
-                <div class=”detail-kicker”>solution</div>
-                <div class=”detail-title”>숨겨진 HTML 주석으로 구조 데이터 채널 분리</div>
-                <p class=”detail-text”>GPT 프롬프트에 목록이 있으면 답변 끝에 <code>&lt;!-- SAVE:제목|항목1,항목2 --&gt;</code> 마커를 붙이도록 지시하고, 서버에서 파싱 후 제거해 사용자에겐 자연스러운 텍스트만 전달했습니다.</p>
+              <div class="bug-box solution">
+                <div class="detail-kicker">solution</div>
+                <div class="detail-title">_ACTION_OVERRIDES 레이어로 선행 확정</div>
+                <p class="detail-text">수정·취소·완료 같은 액션 동사가 감지되면 키워드 점수 계산 전에 인텐트를 확정(confidence 0.88)하는 별도 레이어를 추가해 명사 누적 문제를 구조적으로 차단했습니다.</p>
               </div>
             </div>
-            <div class=”bug”>
-              <div class=”bug-box problem”>
-                <div class=”detail-kicker”>problem</div>
-                <div class=”detail-title”>”그거 메모해줘”에서 '그거'가 무엇인지 모름</div>
-                <p class=”detail-text”>HTTP는 stateless라 직전 GPT 응답이 다음 요청에 전달되지 않습니다. “그거”가 가리키는 내용을 서버가 알 수 없었습니다.</p>
+            <div class="bug">
+              <div class="bug-box problem">
+                <div class="detail-kicker">problem</div>
+                <div class="detail-title">GPT 응답에서 저장할 항목만 뽑기 어려움</div>
+                <p class="detail-text">”파스타 만들려면 뭐 필요해? 그거 메모해줘”처럼 자유 형식 GPT 답변에서 재료 목록만 구조화해 DB에 저장해야 했습니다. JSON 모드를 쓰면 자연스러운 대화체가 깨집니다.</p>
               </div>
-              <div class=”bug-box solution”>
-                <div class=”detail-kicker”>solution</div>
-                <div class=”detail-title”>세션 인메모리 saveable + history 역순 파싱</div>
-                <p class=”detail-text”>SAVE 마커 파싱 시 <code>_session_saveable[session_id]</code>에 저장해두고, CONTEXT_SAVE 인텐트가 오면 해당 세션 항목을 꺼냅니다. 세션 데이터가 없으면 history를 역순으로 탐색해 직전 assistant 메시지에서 목록 라인을 추출합니다.</p>
+              <div class="bug-box solution">
+                <div class="detail-kicker">solution</div>
+                <div class="detail-title">숨겨진 HTML 주석으로 구조 데이터 채널 분리</div>
+                <p class="detail-text">GPT 프롬프트에 목록이 있으면 답변 끝에 <code>&lt;!-- SAVE:제목|항목1,항목2 --&gt;</code> 마커를 붙이도록 지시하고, 서버에서 파싱 후 제거해 사용자에겐 자연스러운 텍스트만 전달했습니다.</p>
+              </div>
+            </div>
+            <div class="bug">
+              <div class="bug-box problem">
+                <div class="detail-kicker">problem</div>
+                <div class="detail-title">”그거 메모해줘”에서 '그거'가 무엇인지 모름</div>
+                <p class="detail-text">HTTP는 stateless라 직전 GPT 응답이 다음 요청에 전달되지 않습니다. “그거”가 가리키는 내용을 서버가 알 수 없었습니다.</p>
+              </div>
+              <div class="bug-box solution">
+                <div class="detail-kicker">solution</div>
+                <div class="detail-title">세션 인메모리 saveable + history 역순 파싱</div>
+                <p class="detail-text">SAVE 마커 파싱 시 <code>_session_saveable[session_id]</code>에 저장해두고, CONTEXT_SAVE 인텐트가 오면 해당 세션 항목을 꺼냅니다. 세션 데이터가 없으면 history를 역순으로 탐색해 직전 assistant 메시지에서 목록 라인을 추출합니다.</p>
               </div>
             </div>
           </div>
@@ -1722,56 +1841,162 @@
       </div>
 
       <div class="modal-body">
-        <div class="slide-grid">
-          <div>
-            <p class="label">collaboration platform</p>
-            <h2 class="slide-title" id="flow-modal-title">문서, 화이트보드, 코드 작업을 한 화면에서 다루는 협업 워크스페이스</h2>
-            <p class="slide-copy">
-              Flow-Work는 단순 문서 앱이 아니라, 실시간 문서 편집, 화이트보드, 회의록, Git 작업 흐름, AI 어시스턴트를 한 워크스페이스 안에 묶은 프로젝트입니다.
-              프론트엔드부터 NestJS 서버, FastAPI AI 서버, Supabase DB, Electron 데스크톱 앱까지 직접 연결했습니다.
-            </p>
-          </div>
-          <div class="detail-list">
-            <div class="detail">
-              <div class="detail-kicker">problem</div>
-              <div class="detail-title">다중 문서 창에서 무거운 에디터가 자주 리렌더링됨</div>
-              <p class="detail-text">
-                창 이동, 리사이즈, 포커스 변경이 발생할 때 문서 에디터까지 영향을 받아 UX가 흔들리는 문제가 있었습니다.
-                창의 위치/크기 상태와 문서 세션을 분리하고, React.memo와 requestAnimationFrame 기반 좌표 업데이트로 렌더 부담을 줄였습니다.
+        <article class="flow-slide active">
+          <div class="slide-grid">
+            <div>
+              <p class="label">01 project</p>
+              <h2 class="slide-title" id="flow-modal-title">문서, 화이트보드, 코드 작업을 한 화면에서 다루는 협업 워크스페이스</h2>
+              <p class="slide-copy">
+                Flow-Work는 단순 문서 앱이 아니라, 실시간 문서 편집, 화이트보드, 회의록, Git 작업 흐름, AI 어시스턴트를 한 워크스페이스 안에 묶은 프로젝트입니다.
+                프론트엔드부터 NestJS 서버, FastAPI AI 서버, Supabase DB, Electron 데스크톱 앱까지 직접 연결했습니다.
               </p>
             </div>
-            <div class="detail">
-              <div class="detail-kicker">whiteboard</div>
-              <div class="detail-title">화이트보드 이미지 복원 문제 분석 및 asset 구조 개선</div>
-              <p class="detail-text">
-                Excalidraw + Yjs 환경에서 이미지가 새로고침 후 placeholder로 보이거나 사용자별 scene이 달라질 수 있는 문제를 추적했습니다.
-                파일 저장 키, Yjs 동기화, storage 복원 책임을 나누는 방향으로 구조를 정리했습니다.
-              </p>
-            </div>
-            <div class="detail">
-              <div class="detail-kicker">ai search</div>
-              <div class="detail-title">문서를 AI가 검색할 수 있는 projection/embedding 파이프라인</div>
-              <p class="detail-text">
-                Yjs 문서 상태를 검색 가능한 plain text와 chunk로 변환하고, projection job과 embedding job으로 분리했습니다.
-                stale projection 갱신, 실패 job 재시도, 기존 embedding 재사용 흐름까지 고려했습니다.
-              </p>
-            </div>
-            <div class="detail">
-              <div class="detail-kicker">workflow</div>
-              <div class="detail-title">권한, freeze 승인, Git 작업 흐름을 워크스페이스에 통합</div>
-              <p class="detail-text">
-                Space별 읽기/쓰기/승인 권한을 나누고, 문서 고정 요청과 승인 흐름을 구현했습니다.
-                로컬 Git Agent를 통해 commit, diff, merge request review도 별도 도구 없이 확인할 수 있게 연결했습니다.
-              </p>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">frontend</div>
+                <div class="detail-title">React 기반 작업 공간 UI</div>
+                <p class="detail-text">문서, 화이트보드, 회의록, 프로젝트 코드 화면을 워크스페이스 안에서 이동하며 사용할 수 있게 구성했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">backend</div>
+                <div class="detail-title">NestJS + Supabase 구조</div>
+                <p class="detail-text">인증, 권한, 문서 상태, WebSocket 협업 서버, PostgreSQL 마이그레이션을 백엔드에서 관리했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">ai</div>
+                <div class="detail-title">FastAPI AI 서버 분리</div>
+                <p class="detail-text">Google GenAI 호출, 임베딩, SSE 스트리밍 응답을 별도 AI 서버로 분리해 앱 서버와 역할을 나눴습니다.</p>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
+
+        <article class="flow-slide">
+          <div class="slide-grid">
+            <div>
+              <p class="label">02 multi window</p>
+              <h2 class="slide-title">다중 문서 창에서 에디터 리렌더링 문제를 줄였습니다.</h2>
+              <p class="slide-copy">
+                여러 문서를 동시에 띄우면 창 이동, 리사이즈, 포커스 변경이 계속 발생합니다.
+                처음에는 이런 UI 상태 변화가 무거운 문서 에디터까지 흔들어 다중창 사용감이 불안정했습니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">problem</div>
+                <div class="detail-title">창 상태와 문서 편집 상태가 같이 흔들림</div>
+                <p class="detail-text">창의 위치와 z-index가 바뀔 때 내부 BlockNote/TipTap 에디터까지 영향을 받아 불필요한 렌더링이 생겼습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">solution</div>
+                <div class="detail-title">창 메타데이터와 문서 세션 분리</div>
+                <p class="detail-text">Zustand store에서 창의 위치/크기/활성 상태와 문서 세션 상태를 나누고, 실제 cleanup은 창을 닫을 때 일어나게 했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">performance</div>
+                <div class="detail-title">React.memo + requestAnimationFrame</div>
+                <p class="detail-text">창 컴포넌트를 memo 처리하고 드래그/리사이즈 좌표 업데이트를 requestAnimationFrame으로 묶어 렌더 빈도를 줄였습니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flow-slide">
+          <div class="slide-grid">
+            <div>
+              <p class="label">03 whiteboard</p>
+              <h2 class="slide-title">화이트보드 이미지가 새로고침 후 깨지는 문제를 추적했습니다.</h2>
+              <p class="slide-copy">
+                Excalidraw와 Yjs를 붙이면 도형 동기화만으로 끝나지 않습니다.
+                이미지 파일은 storage에 저장되고, scene은 Yjs로 공유되기 때문에 두 데이터의 타이밍이 어긋나면 다른 사용자가 placeholder만 보게 됩니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">problem</div>
+                <div class="detail-title">scene과 file source의 원자성 문제</div>
+                <p class="detail-text">이미지 element는 먼저 공유되지만 실제 파일 경로는 나중에 기록되어 refresh나 늦은 접속에서 복원 순서가 꼬일 수 있었습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">fix</div>
+                <div class="detail-title">S3 기반 asset 저장/복원 흐름 정리</div>
+                <p class="detail-text">파일 저장 키, asset registry, 복원 책임을 분리하고 orphan asset 정리까지 고려해 구조를 개선했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">learning</div>
+                <div class="detail-title">patch보다 구조 전환이 필요한 문제로 판단</div>
+                <p class="detail-text">단순 로컬 snapshot 보정보다 binding 중심 sync와 fileId = storage key 계약으로 가야 한다는 리팩토링 방향을 문서화했습니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flow-slide">
+          <div class="slide-grid">
+            <div>
+              <p class="label">04 ai search</p>
+              <h2 class="slide-title">문서를 AI가 검색할 수 있도록 projection과 embedding 흐름을 나눴습니다.</h2>
+              <p class="slide-copy">
+                협업 문서는 Yjs 상태로 저장되기 때문에 AI가 바로 검색하기 어렵습니다.
+                그래서 문서 상태를 plain text와 chunk로 변환하는 projection 단계와, 검색용 embedding 단계를 분리했습니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">pipeline</div>
+                <div class="detail-title">projection job / embedding job 분리</div>
+                <p class="detail-text">문서 변경 후 projection을 만들고, 해당 chunk 기준으로 embedding 작업을 큐에 넣는 흐름을 구성했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">freshness</div>
+                <div class="detail-title">stale projection 갱신</div>
+                <p class="detail-text">AI 검색 전에 projection이 오래된 경우 최신 문서 상태로 다시 갱신하도록 해 검색 결과의 신뢰도를 높였습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">cost</div>
+                <div class="detail-title">기존 embedding 재사용</div>
+                <p class="detail-text">이전 projection과 같은 text hash를 가진 chunk는 embedding을 재사용해 불필요한 외부 API 호출을 줄이는 방향으로 설계했습니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="flow-slide">
+          <div class="slide-grid">
+            <div>
+              <p class="label">05 workflow</p>
+              <h2 class="slide-title">권한, 문서 고정, Git 작업 흐름까지 워크스페이스에 붙였습니다.</h2>
+              <p class="slide-copy">
+                협업 도구는 편집만 되면 끝이 아니라 누가 보고, 누가 수정하고, 어떤 문서를 고정할 수 있는지까지 필요했습니다.
+                또 프로젝트 코드 작업을 위해 로컬 Git 흐름도 작업 공간 안으로 가져왔습니다.
+              </p>
+            </div>
+            <div class="detail-list">
+              <div class="detail">
+                <div class="detail-kicker">permission</div>
+                <div class="detail-title">Space별 읽기/쓰기/승인 권한</div>
+                <p class="detail-text">멤버 태그 기반으로 읽기, 쓰기, freeze 승인 권한을 나눠 공간별 협업 규칙을 설정할 수 있게 했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">freeze</div>
+                <div class="detail-title">문서 고정 요청과 승인 흐름</div>
+                <p class="detail-text">작업 중인 문서를 고정본으로 만들 때 요청, 승인, 반려 상태를 나눠 문서 변경 흐름을 관리했습니다.</p>
+              </div>
+              <div class="detail">
+                <div class="detail-kicker">git</div>
+                <div class="detail-title">로컬 Git Agent 연동</div>
+                <p class="detail-text">commit, diff, merge request review를 워크스페이스 안에서 확인할 수 있도록 로컬 Git Agent와 Electron 앱 흐름을 연결했습니다.</p>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
       <div class="modal-foot">
-        <span class="modal-small">React · NestJS · FastAPI · Supabase · Yjs · Electron · Docker</span>
+        <div class="flow-dots" aria-label="Flow-Work 슬라이드 선택"></div>
         <div class="modal-actions">
-          <a class="btn btn-primary" href="https://github.com/DeveloperEveLsw/Flow-Work" target="_blank" rel="noreferrer">GitHub 보기</a>
+          <button class="btn btn-ghost" type="button" data-flow-prev>이전</button>
+          <button class="btn btn-primary" type="button" data-flow-next>다음</button>
         </div>
       </div>
     </div>
@@ -1793,10 +2018,15 @@
     const modal = document.getElementById("aria-modal");
     const flowModal = document.getElementById("flow-modal");
     const slides = Array.from(document.querySelectorAll(".slide"));
+    const flowSlides = Array.from(document.querySelectorAll(".flow-slide"));
     const dotsWrap = document.querySelector(".dots");
+    const flowDotsWrap = document.querySelector(".flow-dots");
     const prevButton = document.querySelector("[data-prev]");
     const nextButton = document.querySelector("[data-next]");
+    const flowPrevButton = document.querySelector("[data-flow-prev]");
+    const flowNextButton = document.querySelector("[data-flow-next]");
     let currentSlide = 0;
+    let currentFlowSlide = 0;
 
     const dots = slides.map((_, index) => {
       const dot = document.createElement("button");
@@ -1805,6 +2035,16 @@
       dot.setAttribute("aria-label", `${index + 1}번 설명 보기`);
       dot.addEventListener("click", () => setSlide(index));
       dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    const flowDots = flowSlides.map((_, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "dot-button";
+      dot.setAttribute("aria-label", `Flow-Work ${index + 1}번 설명 보기`);
+      dot.addEventListener("click", () => setFlowSlide(index));
+      flowDotsWrap.appendChild(dot);
       return dot;
     });
 
@@ -1818,6 +2058,18 @@
       });
       prevButton.style.visibility = currentSlide === 0 ? "hidden" : "visible";
       nextButton.textContent = currentSlide === slides.length - 1 ? "처음으로" : "다음";
+    }
+
+    function setFlowSlide(index) {
+      currentFlowSlide = Math.max(0, Math.min(flowSlides.length - 1, index));
+      flowSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === currentFlowSlide);
+      });
+      flowDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === currentFlowSlide);
+      });
+      flowPrevButton.style.visibility = currentFlowSlide === 0 ? "hidden" : "visible";
+      flowNextButton.textContent = currentFlowSlide === flowSlides.length - 1 ? "처음으로" : "다음";
     }
 
     function openModal() {
@@ -1835,6 +2087,8 @@
     function openFlowModal() {
       flowModal.classList.add("open");
       document.body.classList.add("modal-open");
+      setFlowSlide(0);
+      flowNextButton.focus();
     }
 
     function closeFlowModal() {
@@ -1865,6 +2119,12 @@
       else setSlide(currentSlide + 1);
     });
 
+    flowPrevButton.addEventListener("click", () => setFlowSlide(currentFlowSlide - 1));
+    flowNextButton.addEventListener("click", () => {
+      if (currentFlowSlide === flowSlides.length - 1) setFlowSlide(0);
+      else setFlowSlide(currentFlowSlide + 1);
+    });
+
     window.addEventListener("keydown", (event) => {
       if (!modal.classList.contains("open")) return;
       if (event.key === "Escape") closeModal();
@@ -1877,9 +2137,14 @@
     window.addEventListener("keydown", (event) => {
       if (!flowModal.classList.contains("open")) return;
       if (event.key === "Escape") closeFlowModal();
+      if (event.key === "ArrowLeft") setFlowSlide(currentFlowSlide - 1);
+      if (event.key === "ArrowRight" && currentFlowSlide < flowSlides.length - 1) {
+        setFlowSlide(currentFlowSlide + 1);
+      }
     });
 
     setSlide(0);
+    setFlowSlide(0);
   </script>
 </body>
 </html>
