@@ -977,6 +977,203 @@
       font-weight: 800;
     }
 
+    .demo-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 16px;
+    }
+
+    .demo-tab {
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 7px 12px;
+    }
+
+    .demo-tab.active {
+      border-color: rgba(36, 89, 214, 0.38);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .demo-view {
+      display: none;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .demo-view.active {
+      display: grid;
+    }
+
+    .demo-shot {
+      position: relative;
+      min-height: 330px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(36, 89, 214, 0.08), rgba(24, 133, 104, 0.08)),
+        var(--surface-soft);
+      overflow: hidden;
+    }
+
+    .demo-frame {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 14px 14px 54px;
+    }
+
+    .demo-frame.active {
+      display: grid;
+    }
+
+    .demo-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+      box-shadow: 0 14px 34px rgba(31, 28, 22, 0.12);
+    }
+
+    .demo-shot-placeholder {
+      width: min(520px, 86%);
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      border: 1px dashed #c9beb1;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.58);
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .demo-carousel-controls {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .demo-carousel-controls button {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--ink);
+      cursor: pointer;
+      font-family: var(--mono);
+      pointer-events: auto;
+    }
+
+    .demo-carousel-controls button:hover,
+    .demo-carousel-controls button:focus-visible {
+      border-color: rgba(36, 89, 214, 0.35);
+      color: var(--accent);
+    }
+
+    .demo-counter {
+      min-width: 52px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.84);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-align: center;
+      padding: 5px 10px;
+    }
+
+    .demo-copy {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfaf7;
+      padding: 20px;
+    }
+
+    .demo-copy h3 {
+      font-size: 18px;
+      line-height: 1.42;
+    }
+
+    .demo-copy p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.78;
+    }
+
+    #flow-demo-modal .modal {
+      width: min(1560px, calc(100vw - 32px));
+      max-height: 94vh;
+    }
+
+    #flow-demo-modal .modal-body {
+      padding: 24px 28px 28px;
+    }
+
+    #flow-demo-modal .slide-title {
+      max-width: 760px;
+      font-size: clamp(26px, 2.5vw, 38px);
+    }
+
+    #flow-demo-modal .slide-copy {
+      max-width: 900px;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    #flow-demo-modal .demo-shot {
+      min-height: clamp(500px, 64vh, 720px);
+    }
+
+    #flow-demo-modal .demo-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: clamp(500px, 64vh, 720px);
+    }
+
+    .demo-points {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+      list-style: none;
+    }
+
+    .demo-points li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.62;
+    }
+
+    .demo-points li::before {
+      content: "→";
+      margin-right: 7px;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
     .detail {
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -1109,6 +1306,19 @@
         border-bottom: 1px solid var(--line);
       }
 
+      #flow-demo-modal .demo-view {
+        grid-template-columns: 1fr;
+      }
+
+      #flow-demo-modal .demo-shot,
+      #flow-demo-modal .demo-copy {
+        min-height: auto;
+      }
+
+      #flow-demo-modal .demo-shot {
+        aspect-ratio: 16 / 10;
+      }
+
       .skills-wrap {
         grid-template-columns: 1fr;
       }
@@ -1144,7 +1354,8 @@
       .projects-grid,
       .diagram-row,
       .timeline-item,
-      .bug {
+      .bug,
+      .demo-view {
         grid-template-columns: 1fr;
       }
 
@@ -1162,6 +1373,18 @@
 
       .modal-body {
         padding: 28px 20px;
+      }
+
+      #flow-demo-modal .modal {
+        width: min(100%, calc(100vw - 24px));
+      }
+
+      #flow-demo-modal .modal-body {
+        padding: 22px 14px;
+      }
+
+      #flow-demo-modal .demo-shot {
+        aspect-ratio: 4 / 3;
       }
 
       .modal-foot {
@@ -1495,6 +1718,7 @@
               </ul>
               <div class="project-actions">
                 <button class="text-link" type="button" data-open-flow-modal>자세히 보기</button>
+                <button class="text-link" type="button" data-open-flow-demo-modal>Demo View</button>
                 <a class="text-link" href="https://github.com/DeveloperEveLsw/Flow-Work" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
@@ -1977,6 +2201,193 @@
     </div>
   </div>
 
+  <div class="modal-overlay" id="flow-demo-modal" role="dialog" aria-modal="true" aria-labelledby="flow-demo-title">
+    <div class="modal">
+      <div class="modal-head">
+        <span class="modal-small">Flow-Work demo view</span>
+        <button class="modal-close" type="button" data-close-flow-demo-modal aria-label="닫기">X</button>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          <p class="label">product flow</p>
+          <h2 class="slide-title" id="flow-demo-title">사용자가 실제로 보는 기능 흐름</h2>
+          <p class="slide-copy">
+            기술 설명과 별도로, 화면을 보면서 Flow-Work의 핵심 사용 흐름을 빠르게 이해할 수 있도록 분리한 데모 뷰입니다.
+            워크스페이스, Flow, Task, 문서 창, 히스토리, 변경 제안 화면을 실제 스크린샷으로 보여줍니다.
+          </p>
+        </div>
+
+        <div class="demo-tabs" aria-label="Flow-Work 데모 기능">
+          <button class="demo-tab active" type="button" data-flow-demo-tab="dashboard">Dashboard</button>
+          <button class="demo-tab" type="button" data-flow-demo-tab="flow">Flow</button>
+          <button class="demo-tab" type="button" data-flow-demo-tab="multi-docs">Multi Docs</button>
+          <button class="demo-tab" type="button" data-flow-demo-tab="ai-diagram">AI Diagram</button>
+          <button class="demo-tab" type="button" data-flow-demo-tab="history">History</button>
+          <button class="demo-tab" type="button" data-flow-demo-tab="proposals">Proposals</button>
+        </div>
+
+        <div class="demo-view active" data-flow-demo-panel="dashboard">
+          <div class="demo-shot" aria-label="워크스페이스 대시보드 스크린샷 자리" data-demo-carousel>
+            <div class="demo-frame active">
+              <img src="assets/flow-demo/dashboard-overview.png" alt="Flow-Work 워크스페이스 대시보드 전체 현황" />
+            </div>
+            <div class="demo-frame">
+              <img src="assets/flow-demo/dashboard-recent-docs.png" alt="최근 변경 문서와 우선 확인 Flow 영역" />
+            </div>
+            <div class="demo-carousel-controls">
+              <button type="button" data-demo-prev aria-label="이전 이미지">‹</button>
+              <span class="demo-counter" data-demo-counter>1 / 2</span>
+              <button type="button" data-demo-next aria-label="다음 이미지">›</button>
+            </div>
+          </div>
+          <div class="demo-copy">
+            <div class="detail-kicker">dashboard</div>
+            <h3>워크스페이스 전체 현황을 한 화면에서 확인합니다.</h3>
+            <p>모든 Space, Task, Flow health, 실행 큐를 한 화면에서 보고 현재 워크스페이스의 상태를 먼저 파악하는 홈 대시보드입니다.</p>
+            <ul class="demo-points">
+              <li>전체 Space 수와 활성 Space 진행 상태 요약</li>
+              <li>열린 Task, 7일 내 마감, 승인 대기 같은 실행 큐 표시</li>
+              <li>Task Board, Projects, 연관 범주, 문서 템플릿으로 바로 이동</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="demo-view" data-flow-demo-panel="flow">
+          <div class="demo-shot" aria-label="Flow와 Task 상세 화면 스크린샷 자리" data-demo-carousel>
+            <div class="demo-frame active">
+              <img src="assets/flow-demo/flow-task-detail.png" alt="Flow 목표와 Task 상세 패널" />
+            </div>
+            <div class="demo-frame">
+              <img src="assets/flow-demo/task-kanban.png" alt="내 작업과 승인 대기를 보드로 보는 Task 화면" />
+            </div>
+            <div class="demo-frame">
+              <img src="assets/flow-demo/tasks-board.png" alt="전체 Task 보드 화면" />
+            </div>
+            <div class="demo-frame">
+              <img src="assets/flow-demo/tasks-approval-list.png" alt="승인 대기 Task 리스트 화면" />
+            </div>
+            <div class="demo-carousel-controls">
+              <button type="button" data-demo-prev aria-label="이전 이미지">‹</button>
+              <span class="demo-counter" data-demo-counter>1 / 4</span>
+              <button type="button" data-demo-next aria-label="다음 이미지">›</button>
+            </div>
+          </div>
+          <div class="demo-copy">
+            <div class="detail-kicker">flow</div>
+            <h3>Flow는 완성해야 할 목표를 작업 단위로 쪼갠 화면입니다.</h3>
+            <p>Spring Launch Campaign 같은 목표 아래에 클라이언트 리뷰 반영, 인스타그램 캐러셀 디자인처럼 담당자가 다른 Task들이 연결됩니다.</p>
+            <ul class="demo-points">
+              <li>Flow를 목표 단위로 보고 하위 Task를 한 목록에서 관리</li>
+              <li>Task마다 담당자, 마감일, 우선순위, 요청자 확인 상태 표시</li>
+              <li>오른쪽 상세 패널에서 수정 내용, 연결 문서, 승인 흐름 확인</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="demo-view" data-flow-demo-panel="multi-docs">
+          <div class="demo-shot" aria-label="다중 문서 창 스크린샷 자리" data-demo-carousel>
+            <div class="demo-frame active">
+              <img src="assets/flow-demo/multi-docs.png" alt="여러 문서를 동시에 띄워 비교하는 다중 문서 창" />
+            </div>
+            <div class="demo-carousel-controls">
+              <button type="button" data-demo-prev aria-label="이전 이미지">‹</button>
+              <span class="demo-counter" data-demo-counter>1 / 1</span>
+              <button type="button" data-demo-next aria-label="다음 이미지">›</button>
+            </div>
+          </div>
+          <div class="demo-copy">
+            <div class="detail-kicker">multi docs</div>
+            <h3>서로 참고해야 하는 문서를 여러 창으로 동시에 봅니다.</h3>
+            <p>Task와 연결된 문서들이 서로 참조되어야 할 때, 여러 문서를 플로팅 창과 상단 탭으로 열어 비교하면서 작업할 수 있습니다.</p>
+            <ul class="demo-points">
+              <li>참고 문서와 작업 문서를 나란히 열어 비교 가능</li>
+              <li>상단 탭 스트립으로 열린 문서들을 빠르게 전환</li>
+              <li>문서 창의 위치, 크기, z-index 상태를 별도 store로 관리</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="demo-view" data-flow-demo-panel="ai-diagram">
+          <div class="demo-shot" aria-label="AI 다이어그램 생성 화면 스크린샷 자리" data-demo-carousel>
+            <div class="demo-frame active">
+              <img src="assets/flow-demo/ai-diagram.png" alt="AI가 요청을 바탕으로 Queue 구조 다이어그램을 생성한 화면" />
+            </div>
+            <div class="demo-carousel-controls">
+              <button type="button" data-demo-prev aria-label="이전 이미지">‹</button>
+              <span class="demo-counter" data-demo-counter>1 / 1</span>
+              <button type="button" data-demo-next aria-label="다음 이미지">›</button>
+            </div>
+          </div>
+          <div class="demo-copy">
+            <div class="detail-kicker">ai diagram + board</div>
+            <h3>문서에 정리한 내용을 AI가 회의용 그림으로 구조화합니다.</h3>
+            <p>기획 문서에 적힌 기능 흐름을 AI가 다이어그램으로 정리하고, 그 결과를 화이트보드에서 팀이 함께 보며 아이디어 회의로 이어가는 흐름입니다.</p>
+            <ul class="demo-points">
+              <li>문서에 정리된 요구사항과 흐름을 시각 자료로 변환</li>
+              <li>AI가 만든 구조도를 회의용 보드의 초안으로 활용</li>
+              <li>팀원이 같은 그림을 보며 노드와 연결을 수정하고 토론</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="demo-view" data-flow-demo-panel="history">
+          <div class="demo-shot" aria-label="히스토리 화면 스크린샷 자리" data-demo-carousel>
+            <div class="demo-frame active">
+              <img src="assets/flow-demo/history-map.png" alt="문서와 리뷰 상태를 관계망으로 보여주는 히스토리 화면" />
+            </div>
+            <div class="demo-carousel-controls">
+              <button type="button" data-demo-prev aria-label="이전 이미지">‹</button>
+              <span class="demo-counter" data-demo-counter>1 / 1</span>
+              <button type="button" data-demo-next aria-label="다음 이미지">›</button>
+            </div>
+          </div>
+          <div class="demo-copy">
+            <div class="detail-kicker">history</div>
+            <h3>워크스페이스 안의 문서와 변경 상태를 시간순으로 추적합니다.</h3>
+            <p>생성된 문서, Space, 리뷰 상태, 변경 제안을 관계망으로 보여줘 어떤 문서가 확정됐고 무엇이 검토 중인지 한눈에 파악합니다.</p>
+            <ul class="demo-points">
+              <li>문서, Space, 리뷰 상태, 변경 제안을 시간 흐름으로 확인</li>
+              <li>확정, 검토 중, 논의 중 상태를 노드와 라벨로 구분</li>
+              <li>선택한 문서의 맥락과 연결된 활동을 바로 탐색</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="demo-view" data-flow-demo-panel="proposals">
+          <div class="demo-shot" aria-label="변경 제안 화면 스크린샷 자리" data-demo-carousel>
+            <div class="demo-frame active">
+              <img src="assets/flow-demo/proposals.png" alt="변경 제안 카드와 제안 상세 패널" />
+            </div>
+            <div class="demo-carousel-controls">
+              <button type="button" data-demo-prev aria-label="이전 이미지">‹</button>
+              <span class="demo-counter" data-demo-counter>1 / 1</span>
+              <button type="button" data-demo-next aria-label="다음 이미지">›</button>
+            </div>
+          </div>
+          <div class="demo-copy">
+            <div class="detail-kicker">proposals</div>
+            <h3>프로젝트 중 생기는 변경 제안을 팀 단위로 논의합니다.</h3>
+            <p>아이디어, 수정 요청, 방향성 변경을 제안 카드로 올리고 논의 중, 확정됨, 보류됨 상태로 관리하는 화면입니다.</p>
+            <ul class="demo-points">
+              <li>제안을 논의 중, 확정됨, 보류됨 상태로 분류</li>
+              <li>팀원 의견과 투표 수를 카드에서 바로 확인</li>
+              <li>오른쪽 상세 패널에서 결정 과정과 댓글을 기록</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-foot">
+        <span class="modal-small">Screenshots connected for the main Flow-Work product flow</span>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" type="button" data-close-flow-demo-modal>닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const fadeItems = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver((entries) => {
@@ -1992,6 +2403,7 @@
 
     const modal = document.getElementById("aria-modal");
     const flowModal = document.getElementById("flow-modal");
+    const flowDemoModal = document.getElementById("flow-demo-modal");
     const slides = Array.from(document.querySelectorAll(".slide"));
     const flowSlides = Array.from(document.querySelectorAll(".flow-slide"));
     const dotsWrap = document.querySelector(".dots");
@@ -2000,8 +2412,188 @@
     const nextButton = document.querySelector("[data-next]");
     const flowPrevButton = document.querySelector("[data-flow-prev]");
     const flowNextButton = document.querySelector("[data-flow-next]");
+    const flowDemoTabs = Array.from(document.querySelectorAll("[data-flow-demo-tab]"));
+    const flowDemoPanels = Array.from(document.querySelectorAll("[data-flow-demo-panel]"));
+    const demoCarousels = Array.from(document.querySelectorAll("[data-demo-carousel]"));
     let currentSlide = 0;
     let currentFlowSlide = 0;
+
+    const demoCopyByPanel = {
+      dashboard: [
+        {
+          title: "워크스페이스 전체 현황을 한 화면에서 확인합니다.",
+          body: "모든 Space, Task, Flow health, 실행 큐를 한 화면에서 보고 현재 워크스페이스의 상태를 먼저 파악하는 홈 대시보드입니다.",
+          points: [
+            "전체 Space 수와 활성 Space 진행 상태 요약",
+            "열린 Task, 7일 내 마감, 승인 대기 같은 실행 큐 표시",
+            "Task Board, Projects, 연관 범주, 문서 템플릿으로 바로 이동",
+          ],
+        },
+        {
+          title: "최근 변경 문서와 우선 확인 Flow를 바로 이어서 봅니다.",
+          body: "워크스페이스 홈에서 최근 변경 문서를 확인하고, 막힘이나 일정 위험이 있는 Flow를 우선순위에 따라 바로 이어서 볼 수 있습니다.",
+          points: [
+            "최근 변경 문서를 카드 목록으로 분리해 표시",
+            "문서 타입, 소속 Space, 변경 시점, 검토 상태를 함께 보여줌",
+            "우선 확인 Flow에서 관련 작업으로 이어지는 대시보드 동선 구성",
+          ],
+        },
+      ],
+      flow: [
+        {
+          title: "Flow는 목표와 하위 Task를 한 화면에서 다룹니다.",
+          body: "Spring Launch Campaign 같은 목표 아래에 클라이언트 리뷰 반영, 인스타그램 캐러셀 디자인처럼 담당자가 다른 Task들이 연결되고, 선택한 Task는 오른쪽 상세 패널에서 바로 확인합니다.",
+          points: [
+            "Flow를 목표 단위로 보고 하위 Task를 한 목록에서 관리",
+            "Task마다 담당자, 마감일, 우선순위, 요청자 확인 상태 표시",
+            "오른쪽 상세 패널에서 수정 내용, 연결 문서, 승인 흐름 확인",
+          ],
+        },
+        {
+          title: "내 작업과 승인 대기를 보드로 나눠 확인합니다.",
+          body: "Task 화면은 내가 맡은 일, 전체 작업, 승인 대기를 분리해서 보여주고 리스트/보드 전환으로 진행 상태를 빠르게 훑을 수 있습니다.",
+          points: [
+            "내 작업, 전체 작업, 승인 대기 필터 제공",
+            "할 일, 진행 중, 완료 컬럼으로 작업 상태를 시각화",
+            "검색, 우선순위, 완료 방식 필터로 필요한 작업만 좁힘",
+          ],
+        },
+        {
+          title: "전체 Task를 리스트와 보드로 전환해서 봅니다.",
+          body: "워크스페이스 Task 화면에서는 내 작업, 전체 작업, 승인 대기를 나눠 보고, 리스트/보드 전환으로 현재 작업 분포를 빠르게 파악합니다.",
+          points: [
+            "내 작업, 전체 작업, 승인 대기 필터 제공",
+            "할 일, 진행 중, 완료 컬럼으로 작업 상태를 시각화",
+            "검색, 우선순위, 완료 방식 필터로 필요한 작업만 좁힘",
+          ],
+        },
+        {
+          title: "승인 대기 작업을 따로 모아 검토합니다.",
+          body: "요청자 확인이 필요한 작업은 승인 대기 탭에서 분리해 보여주고, 담당자와 마감일, 연결된 Flow를 함께 확인할 수 있습니다.",
+          points: [
+            "승인 요청된 Task만 따로 필터링",
+            "진행 상태, 우선순위, 요청자 확인 상태를 row에 직접 표시",
+            "승인 대상 작업을 Flow 맥락과 함께 검토",
+          ],
+        },
+      ],
+      "multi-docs": [
+        {
+          title: "서로 참고해야 하는 문서를 여러 창으로 동시에 봅니다.",
+          body: "Task와 연결된 문서들이 서로 참조되어야 할 때, 여러 문서를 플로팅 창과 상단 탭으로 열어 비교하면서 작업할 수 있습니다.",
+          points: [
+            "참고 문서와 작업 문서를 나란히 열어 비교 가능",
+            "상단 탭 스트립으로 열린 문서들을 빠르게 전환",
+            "문서 창의 위치, 크기, z-index 상태를 별도 store로 관리",
+          ],
+        },
+        {
+          title: "열린 문서는 상단 탭처럼 관리됩니다.",
+          body: "화면 위쪽에 열린 문서들이 탭 형태로 모여 있어서, 작업자가 여러 문서를 잃어버리지 않고 빠르게 전환할 수 있습니다.",
+          points: [
+            "열린 문서 수와 제목을 탭 스트립에 표시",
+            "활성 문서와 백그라운드 문서를 시각적으로 구분",
+            "닫기와 최소화 흐름을 문서 창 상태와 연결",
+          ],
+        },
+        {
+          title: "Task에 연결된 문서를 같이 열어 맥락을 확인합니다.",
+          body: "인스타그램 캐러셀 디자인과 광고 타겟 세그먼트 정리처럼 서로 영향을 주는 산출물을 동시에 띄워, Task의 맥락을 보면서 작업합니다.",
+          points: [
+            "Task와 연결된 deliverable 문서를 다중 창으로 열기",
+            "문서 내용의 Project, Owner, Status를 보며 업무 맥락 확인",
+            "여러 담당자의 산출물을 한 화면에서 비교하는 협업 흐름 구성",
+          ],
+        },
+      ],
+      "ai-diagram": [
+        {
+          title: "문서에 정리한 내용을 AI가 회의용 그림으로 구조화합니다.",
+          body: "사용자가 자연어로 요청하면 AI가 다이어그램 초안을 만들고, 그 결과를 화이트보드 위에서 팀이 함께 보며 아이디어 회의로 이어가는 흐름입니다.",
+          points: [
+            "자연어 요청을 Queue 구조 같은 시각 자료로 변환",
+            "AI Suggestion을 적용해 보드 위에 다이어그램 생성",
+            "팀원이 같은 그림을 보며 노드와 연결을 수정하고 토론",
+          ],
+        },
+        {
+          title: "텍스트로 쌓인 기획 내용을 시각 맵으로 바꿉니다.",
+          body: "문서에 적힌 사용자 경험, 기능 연결도, 작업 순서를 AI가 읽고 노드와 화살표가 있는 구조도로 재구성합니다.",
+          points: [
+            "문서 기반 요구사항을 다이어그램 요소로 변환",
+            "UX 흐름, 기능 의존성, 피드백 루프를 시각적으로 표현",
+            "복잡한 논의를 팀원이 같은 그림으로 이해하도록 보조",
+          ],
+        },
+        {
+          title: "아이디어 회의용 보드로 바로 이어집니다.",
+          body: "AI가 만든 초안을 화이트보드에서 보며 팀원이 수정, 보완, 연결선을 추가해 회의 결과물로 발전시킬 수 있습니다.",
+          points: [
+            "AI 생성 결과를 협업 가능한 화이트보드 장면으로 사용",
+            "회의 중 노드 수정, 연결 추가, 구조 재배치 가능",
+            "문서 정리와 아이디어 회의를 한 작업 흐름으로 연결",
+          ],
+        },
+      ],
+      history: [
+        {
+          title: "워크스페이스 안의 문서와 변경 상태를 시간순으로 추적합니다.",
+          body: "생성된 문서, Space, 리뷰 상태, 변경 제안을 관계망으로 보여줘 어떤 문서가 확정됐고 무엇이 검토 중인지 한눈에 파악합니다.",
+          points: [
+            "문서, Space, 리뷰 상태, 변경 제안을 시간 흐름으로 확인",
+            "확정, 검토 중, 논의 중 상태를 노드와 라벨로 구분",
+            "선택한 문서의 맥락과 연결된 활동을 바로 탐색",
+          ],
+        },
+        {
+          title: "검색 패널로 검토 중인 문서와 변경 제안을 찾습니다.",
+          body: "오른쪽 탐색 패널에서 검색, 최근 변경, 진행 중 흐름, 확정 확인 같은 조건으로 워크스페이스 기록을 좁혀볼 수 있습니다.",
+          points: [
+            "진행 중 흐름, 키워드, 최근 변경 기준으로 기록 필터링",
+            "선택된 문서의 링크 수와 주변 연결 노드를 함께 표시",
+            "문서 열기와 연결 노드 이동으로 기록 탐색을 이어감",
+          ],
+        },
+        {
+          title: "변경 제안이 어디서 논의되고 있는지 되짚습니다.",
+          body: "단순 최근 문서 목록이 아니라, 어떤 제안이 어떤 문서와 연결되어 논의 중인지 관계와 시간 흐름으로 확인하는 화면입니다.",
+          points: [
+            "변경 제안과 연결 문서를 관계 노드로 시각화",
+            "검토 상태와 확정 여부를 문서 주변 정보로 표시",
+            "협업 중 놓친 논의와 변경 맥락을 다시 추적",
+          ],
+        },
+      ],
+      proposals: [
+        {
+          title: "프로젝트 중 생기는 변경 제안을 팀 단위로 논의합니다.",
+          body: "아이디어, 수정 요청, 방향성 변경을 제안 카드로 올리고 논의 중, 확정됨, 보류됨 상태로 관리하는 화면입니다.",
+          points: [
+            "제안을 논의 중, 확정됨, 보류됨 상태로 분류",
+            "팀원 의견과 투표 수를 카드에서 바로 확인",
+            "오른쪽 상세 패널에서 결정 과정과 댓글을 기록",
+          ],
+        },
+        {
+          title: "제안 상세에서 논의와 결정 근거를 남깁니다.",
+          body: "선택한 제안은 오른쪽 상세 패널에서 설명, 댓글, 투표, 상태를 함께 확인해 어떤 이유로 결정됐는지 기록합니다.",
+          points: [
+            "제안 본문과 팀원 의견을 한 패널에서 확인",
+            "좋아요, 댓글, 투표를 통해 팀 단위 결정 과정을 기록",
+            "논의 내용이 흩어지지 않도록 제안 단위로 보관",
+          ],
+        },
+        {
+          title: "아이디어와 수정 요청을 실행 전 단계에서 정리합니다.",
+          body: "진행 중인 캠페인에서 audience targeting, visual direction, copy baseline 같은 방향성 변경을 바로 Task로 넘기기 전에 팀이 먼저 합의합니다.",
+          points: [
+            "아이디어, 수정 요청, 방향 변경을 제안으로 수집",
+            "확정된 제안은 작업 방향과 문서 기준으로 반영",
+            "보류된 제안도 의사결정 맥락으로 남겨 추후 재검토 가능",
+          ],
+        },
+      ],
+    };
 
     const dots = slides.map((_, index) => {
       const dot = document.createElement("button");
@@ -2071,6 +2663,64 @@
       document.body.classList.remove("modal-open");
     }
 
+    function setFlowDemo(step) {
+      flowDemoTabs.forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.flowDemoTab === step);
+      });
+      flowDemoPanels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.flowDemoPanel === step);
+      });
+    }
+
+    function updateDemoCopy(carousel, index) {
+      const panel = carousel.closest("[data-flow-demo-panel]");
+      if (!panel) return;
+
+      const panelId = panel.dataset.flowDemoPanel;
+      const copyItems = demoCopyByPanel[panelId] || [];
+      const copy = copyItems[index];
+      if (!copy) return;
+
+      const title = panel.querySelector(".demo-copy h3");
+      const body = panel.querySelector(".demo-copy p");
+      const points = panel.querySelector(".demo-points");
+
+      if (title) title.textContent = copy.title;
+      if (body) body.textContent = copy.body;
+      if (points) {
+        points.replaceChildren(...copy.points.map((point) => {
+          const item = document.createElement("li");
+          item.textContent = point;
+          return item;
+        }));
+      }
+    }
+
+    function setDemoCarousel(carousel, index) {
+      const frames = Array.from(carousel.querySelectorAll(".demo-frame"));
+      const counter = carousel.querySelector("[data-demo-counter]");
+      const nextIndex = (index + frames.length) % frames.length;
+      carousel.dataset.demoIndex = String(nextIndex);
+      frames.forEach((frame, frameIndex) => {
+        frame.classList.toggle("active", frameIndex === nextIndex);
+      });
+      if (counter) {
+        counter.textContent = `${nextIndex + 1} / ${frames.length}`;
+      }
+      updateDemoCopy(carousel, nextIndex);
+    }
+
+    function openFlowDemoModal() {
+      flowDemoModal.classList.add("open");
+      document.body.classList.add("modal-open");
+      setFlowDemo("dashboard");
+    }
+
+    function closeFlowDemoModal() {
+      flowDemoModal.classList.remove("open");
+      document.body.classList.remove("modal-open");
+    }
+
     document.querySelectorAll("[data-open-modal]").forEach((button) => {
       button.addEventListener("click", openModal);
     });
@@ -2080,12 +2730,37 @@
       button.addEventListener("click", openFlowModal);
     });
     document.querySelector("[data-close-flow-modal]").addEventListener("click", closeFlowModal);
+    document.querySelectorAll("[data-open-flow-demo-modal]").forEach((button) => {
+      button.addEventListener("click", openFlowDemoModal);
+    });
+    document.querySelectorAll("[data-close-flow-demo-modal]").forEach((button) => {
+      button.addEventListener("click", closeFlowDemoModal);
+    });
+    flowDemoTabs.forEach((tab) => {
+      tab.addEventListener("click", () => setFlowDemo(tab.dataset.flowDemoTab));
+    });
+    demoCarousels.forEach((carousel) => {
+      const prev = carousel.querySelector("[data-demo-prev]");
+      const next = carousel.querySelector("[data-demo-next]");
+      setDemoCarousel(carousel, 0);
+      prev?.addEventListener("click", () => {
+        const index = Number(carousel.dataset.demoIndex || "0");
+        setDemoCarousel(carousel, index - 1);
+      });
+      next?.addEventListener("click", () => {
+        const index = Number(carousel.dataset.demoIndex || "0");
+        setDemoCarousel(carousel, index + 1);
+      });
+    });
 
     modal.addEventListener("click", (event) => {
       if (event.target === modal) closeModal();
     });
     flowModal.addEventListener("click", (event) => {
       if (event.target === flowModal) closeFlowModal();
+    });
+    flowDemoModal.addEventListener("click", (event) => {
+      if (event.target === flowDemoModal) closeFlowDemoModal();
     });
 
     prevButton.addEventListener("click", () => setSlide(currentSlide - 1));
@@ -2118,8 +2793,14 @@
       }
     });
 
+    window.addEventListener("keydown", (event) => {
+      if (!flowDemoModal.classList.contains("open")) return;
+      if (event.key === "Escape") closeFlowDemoModal();
+    });
+
     setSlide(0);
     setFlowSlide(0);
+    setFlowDemo("dashboard");
   </script>
 </body>
 </html>
